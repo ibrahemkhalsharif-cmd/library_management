@@ -1,18 +1,21 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:article_name",
  "creation": "2026-10-20 10:20:34.384659",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "article_name",
-  "image",
-  "author",
-  "description",
-  "isbn",
   "status",
+  "author",
+  "image",
+  "column_break_qggm",
   "publisher",
-  "category"
+  "category",
+  "isbn",
+  "section_break_colp",
+  "description"
  ],
  "fields": [
   {
@@ -20,11 +23,13 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Article Name",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "image",
    "fieldtype": "Attach Image",
+   "hidden": 1,
    "label": "Image"
   },
   {
@@ -40,7 +45,8 @@
   {
    "fieldname": "isbn",
    "fieldtype": "Data",
-   "label": "ISBN"
+   "label": "ISBN",
+   "unique": 1
   },
   {
    "fieldname": "status",
@@ -58,15 +64,25 @@
    "fieldtype": "Select",
    "label": "Category",
    "options": "Novel\nScience\nHistory"
+  },
+  {
+   "fieldname": "column_break_qggm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_colp",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-20 10:25:33.517046",
+ "modified": "2026-10-20 11:51:48.022111",
  "modified_by": "Administrator",
  "module": "Library management",
  "name": "Article",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
