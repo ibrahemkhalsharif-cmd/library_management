@@ -10,7 +10,8 @@
   "last_name",
   "full_name",
   "email_address",
-  "phone"
+  "phone",
+  "mobile"
  ],
  "fields": [
   {
@@ -40,12 +41,17 @@
    "fieldname": "phone",
    "fieldtype": "Data",
    "label": "Phone"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-21 09:44:26.897878",
+ "modified": "2026-10-21 10:07:48.551384",
  "modified_by": "Administrator",
  "module": "Library management",
  "name": "Library Member",
