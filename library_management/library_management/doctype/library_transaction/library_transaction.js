@@ -1,8 +1,13 @@
-// Copyright (c) 2026, me and contributors
-// For license information, please see license.txt
+frappe.ui.form.on('Library Transaction', {
+    article(frm){
+        if(!frm.doc.article) return;
+        frappe.db.article.get_value("Article", frm.doc.article, "status").then((r) =>{
+            const status = r.message.status;
+            frappe.show_alert({
+                message: `${frm.doc.article} is ${status}`,
+                indicator: status === "Available" ? "green" : "red"
+            })
+        })
+    }
 
-// frappe.ui.form.on("Library Transaction", {
-// 	refresh(frm) {
-
-// 	},
-// });
+})
