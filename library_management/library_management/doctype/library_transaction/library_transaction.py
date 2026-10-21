@@ -8,6 +8,7 @@ class LibraryTransaction(Document):
 		if self.type == "Issue":
 			self.validate_membership()
 			self.validate_article_is_available()
+			self.validate_issue_limit()
 			self.set_article_status("Issued")
 		elif self.type == "Return":
 			self.validate_article_is_issued()
@@ -41,3 +42,15 @@ class LibraryTransaction(Document):
 		article = frappe.get_doc("Article", self.article)
 		article.status = status
 		article.save()
+	
+	def validate_issue_limit(self):
+		limit = frappe.db.get_single_value("Library Settings", "max_articles") or 0
+		if not limit:
+			return 
+
+		filters = {"library_member": self.library_member, "docstatus": DocStatus.submitted()}
+		issued = frappe.db.count("Library Transaction", {**filters, "type": "Issue"})
+		returned = frappe.db.count("Library Transaction", {**filters, "type": "Return"})
+
+		if issued - returned >= limit:
+			frappe.throw("This member has reached the maximum number of issued articles")
