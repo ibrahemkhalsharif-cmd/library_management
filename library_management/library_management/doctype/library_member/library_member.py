@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils import today
 @frappe.whitelist()
-def get_membership_expiry_date(member):
+def get_membership_end_date(member):
 	return frappe.db.get_value(
 		"Library MemberShip",
 		{
