@@ -7,7 +7,7 @@ from frappe.utils import today
 @frappe.whitelist()
 def get_membership_end_date(member):
 	return frappe.db.get_value(
-		"Library MemberShip",
+		"Library Membership",
 		{
 			"library_member": member,
 			"docstatus": 1,
