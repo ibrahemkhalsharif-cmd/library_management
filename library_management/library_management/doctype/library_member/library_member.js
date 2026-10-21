@@ -10,6 +10,21 @@ frappe.ui.form.on('Library Member', {
             library_member: frm.doc.name
         })
     })
+    frappe.call({
+        method: "library_management.library_management.doctype.library_member.library_member.get_library_membership",
+        args: {member: frm.doc.name},
+
+    }).then((r) => {
+        if(r.message){
+            frm.set_intro(
+                `Membership valid until $(frappe.datetime.str_to_user(r.message))`,
+                "green"
+            )
+        }
+        else{
+            frm.set_intro("No active membership", "red")
+        }
+    })
     
 
 
