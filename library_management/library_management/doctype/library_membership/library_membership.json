@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "LMS.#####",
  "creation": "2026-10-21 10:23:17.998737",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -9,7 +10,8 @@
   "full_name",
   "from_date",
   "to_date",
-  "paid"
+  "paid",
+  "amended_from"
  ],
  "fields": [
   {
@@ -41,15 +43,27 @@
    "fieldname": "paid",
    "fieldtype": "Check",
    "label": "Paid"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Library Membership",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-10-21 10:26:32.556010",
+ "modified": "2026-10-21 10:59:09.864975",
  "modified_by": "Administrator",
  "module": "Library management",
  "name": "Library Membership",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
