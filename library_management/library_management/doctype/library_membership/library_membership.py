@@ -11,7 +11,7 @@ class LibraryMembership(Document):
 			"Library Membership",
 			{
 				'library_member': self.library_member,
-				'docstatus' : DocStatus.submitted()
+				'docstatus' : DocStatus.submitted(),
 				'to_date': ('>', self.from_date),
 			}
 		)
