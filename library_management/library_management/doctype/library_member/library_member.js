@@ -11,7 +11,7 @@ frappe.ui.form.on('Library Member', {
         })
     })
     frappe.call({
-        method: "library_management.library_management.doctype.library_member.library_member.get_library_membership",
+        method: "library_management.library_management.doctype.library_member.library_member.get_membership_end_date",
         args: {member: frm.doc.name},
 
     }).then((r) => {
