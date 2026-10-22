@@ -1,25 +1,40 @@
-# Copyright (c) 2026, me and contributors
-# For license information, please see license.txt
-
-# import frappe
+import frappe
 
 
 def execute(filters=None):
-	columns, data = [], []
-	return columns, data
+    filters = filters or {}
+    return get_columns(), get_data(filters)
 
 
-def execute_snapshot_report(filters: dict | None = None):
-	"""Return columns and data for the report.
+def get_columns():
+    return [
+        "Article:Link/Article:150",
+        "Author::150",
+        "Category::120",
+        "Member:Link/Library Member:150",
+    ]
 
-	This is the main entry point for snapshot report. When 'Synced
-	Report' is enabled in report, framework will call this method
-	every time the report is refreshed or a filter is updated. It
-	accepts the same filters as normal execute. But a utility method -
-	get_latest_sync, is also imported.
 
-	"""
-	from frappe.database.duckdb.database import get_latest_sync
+def get_data(filters):
+    category_condition = ""
+    if filters.get("category"):
+        category_condition = "AND a.category = %(category)s"
 
-	columns, data = [], []
-	return columns, data
+    return frappe.db.sql(
+        f"""
+        SELECT a.name, a.author, a.category, t.library_member
+        FROM `tabArticle` a
+        LEFT JOIN `tabLibrary Transaction` t
+            ON t.name = (
+                SELECT t2.name
+                FROM `tabLibrary Transaction` t2
+                WHERE t2.article = a.name
+                  AND t2.docstatus = 1
+                  AND t2.type = 'Issue'
+                ORDER BY t2.date DESC, t2.creation DESC
+                LIMIT 1
+            )
+        WHERE a.status = 'Issued' {category_condition}
+        """,
+        filters,
+    )
