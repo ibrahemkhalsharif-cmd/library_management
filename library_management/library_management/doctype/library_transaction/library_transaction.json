@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "LT.#####",
  "creation": "2026-10-21 11:09:46.400508",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -9,7 +10,8 @@
   "article",
   "library_member",
   "type",
-  "date"
+  "date",
+  "amended_from"
  ],
  "fields": [
   {
@@ -46,16 +48,27 @@
    "in_list_view": 1,
    "label": "Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Library Transaction",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-21 11:12:14.117163",
+ "modified": "2026-10-21 11:51:02.224083",
  "modified_by": "Administrator",
  "module": "Library management",
  "name": "Library Transaction",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

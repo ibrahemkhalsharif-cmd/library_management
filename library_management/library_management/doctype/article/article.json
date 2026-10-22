@@ -52,7 +52,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Issued\nAvailable"
+   "options": "Available\nIssued"
   },
   {
    "fieldname": "publisher",
@@ -78,7 +78,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-20 12:05:30.771679",
+ "modified": "2026-10-21 12:05:54.180999",
  "modified_by": "Administrator",
  "module": "Library management",
  "name": "Article",
